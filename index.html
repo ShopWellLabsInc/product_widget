@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="us">
+<head>
+  <meta charset="utf-8">
+  <!-- ShopWell Simple Product Widget
+  Includes demonstration of how to search for a product by UPC and return product details and a ShopWell 'Fit' score out of 100.
+  External tools used are jQuery for AJAX/JSON/JSONP and jQuery UI for widgets and form tools
+
+  API used in this demo is
+
+  https://api.shopwell.com/getProduct - params are apiAccountId, apiAccountPassword, and upc  -->
+
+  <!-- External javascripts-->
+  <script src="external/jquery/jquery.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script src="shopwellScoreWidget.js"></script>
+  <title>ShopWell Widget Demo </title>
+  <link href="jquery-ui.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="shopwellScoreWidget.css">
+</head>
+<body>
+  <!-- Shopwell Header Logo -->
+  <img id="header" src="shopwell_header.png"/>
+
+    <!-- Section to input API Account ID/ Password  -->
+    <!-- contains error messages for missing fields -->
+  <div class="developer">
+    <div class="ui-widget" id="userNameError">
+      <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+        <strong>Alert:</strong> Please enter valid account name or account ID.</p>
+      </div>
+        <br/>
+    </div>
+    <div>API Account Name/ID:
+      <input id="accountName">  </input>
+    </div>
+    <br/>
+    <br/>
+    <div class="ui-widget" id="passwordError">
+      <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+        <strong>Alert:</strong> Please enter a valid password.</p>
+      </div>
+        <br/>
+    </div>
+    <div>
+    API Account Password:
+    <input id="password">  </input>
+  </div>
+  </div>
+
+  <!-- Widget Container -->
+  <div id="widgetContainer">
+  <div id="upcContainer">
+    <!-- Input UPC -->
+      <h2 class="demoHeaders">Enter Product UPC</h2>
+      <div class="ui-widget" id="upcError">
+      	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+      		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+      		<strong>Alert:</strong> Invalid UPC. UPC must be between 8-14 characters.</p>
+      	</div>
+          <br/>
+      </div>
+    <input id="upcInput" placeholder=" Enter UPC">  </input>
+    <button id="upcButton"> <span class="ui-icon ui-icon-triangle-1-e"></span></button>
+  </div>
+
+  <!-- Widget container with title and error containers -->
+  <h2 class="whiteText"> Widget Content</h2>
+  <div class="ui-widget" id="productError">
+    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+      <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+      <strong>Alert:</strong> No product found. Please verify UPC and try again.</p>
+    </div>
+      <br/>
+  </div>
+    <!-- Product Details Container -->
+  <div id="resultContainer">
+    <div id="productContainer">
+      <div id="productDetailsContainer">
+        <h2 id="productName"></h2>
+        <p id="productDescription"></p>
+      </div>
+      <div id="productImageContainer">
+        <img id="productImage"/>
+        <!-- Score should appear in top right of product image and correctly color coded -->
+        <div id="fitScore">
+            <div id="fitScoreText"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="factsContainer">
+    <h2 id="factsTitle"> Quick Facts </h2>
+    <div id="goodStuffBox">
+        <ul id="good_preferences_list">
+
+        </ul>
+    </div>
+    <div id="badStuffBox">
+        <ul id="bad_preferences_list">
+
+        </ul>
+    </div>
+  </div>
+  <div id="ingredientsContainer">
+    <h3>Ingredients </h3>
+    <p id="ingredientsText"></p>
+  </div>
+
+  <div id="tradeUpsContainer">
+
+      <h3 id="tradeUpsTitle"> Trade-Ups</h3>
+      <div id="tradeUpsProducts">
+          <div id="tradeUpOne" class="tradeUpContainer">
+            <p id="tradeUpNameOne" class="productName">  </p>
+            <p id="tradeUpDescriptionOne" class="productDesc"> </p>
+            <div class="tradeUpImageContainer">
+              <img id="tradeUpImageOne" class="tradeUpImage" src="http://media.shopwell.com/product/4131808003_full.jpg"/>
+              <!-- Score should appear in top right of product image and correctly color coded -->
+              <div id="tradeUpFitScoreOne" class="tradeUpFitScore">
+                  <div id="tradeUpFitScoreTextOne" class="tradeUpFitScoreText"/>
+              </div>
+            </div>
+          </div>
+            </div>
+          <div id="tradeUpTwo" class="tradeUpContainer">
+            <p id="tradeUpNameTwo" class="productName">  </p>
+            <p id="tradeUpDescriptionTwo" class="productDesc"> </p>
+            <div class="tradeUpImageContainer">
+              <img id="tradeUpImageTwo" class="tradeUpImage" src="http://media.shopwell.com/product/4131808003_full.jpg"/>
+              <!-- Score should appear in top right of product image and correctly color coded -->
+              <div id="tradeUpFitScoreTwo" class="tradeUpFitScore">
+                  <div id="tradeUpFitScoreTextTwo" class="tradeUpFitScoreText"/>
+              </div>
+            </div>
+          </div>
+            </div>
+          <div id="tradeUpThree" class="tradeUpContainer">
+            <p id="tradeUpNameThree" class="productName"> </p>
+            <p id="tradeUpDescriptionThree" class="productDesc"> </p>
+            <div class="tradeUpImageContainer">
+              <img id="tradeUpImageThree" class="tradeUpImage"/>
+              <!-- Score should appear in top right of product image and correctly color coded -->
+              <div id="tradeUpFitScoreThree" class="tradeUpFitScore">
+                  <div id="tradeUpFitScoreTextThree" class="tradeUpFitScoreText"/>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+  </div>
+  <div id="nutritionContainer">
+    <h3 id="nutritionTitle"> Nutritional Information </h3>
+    <p id="nutritionText"></p>
+  </div>
+  <div id="termsOfService">
+      <p>INFORMATION ON THE SERVICES IS NOT INTENDED AS A SUBSTITUTE FOR THE ADVICE PROVIDED BY A HEALTHCARE PROFESSIONAL. YOU SHOULD NOT USE INFORMATION ON THE SERVICES FOR THE DIAGNOSIS OR TREATMENT OF A HEALTH PROBLEM OR DISEASES. YOU SHOULD ALWAYS CONSULT YOUR HEALTHCARE PROVIDER BEFORE MAKING ANY DIETARY OR NUTRITIONAL CHANGES.</p>
+      <p>By using this website, you signify your acceptance of ShopWell's Terms of Use located
+      <a style="position:inline;" href="http://www.shopwell.com/terms"> here. </a></p>
+  </div>
+</div>
+
+
+</body>
+</html>

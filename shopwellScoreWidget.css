@@ -1,0 +1,266 @@
+body{
+  font-family: "Trebuchet MS", sans-serif;
+  margin: 50px;
+  background: rgba(120,178,4,1);
+  background: -moz-linear-gradient(left, rgba(120,178,4,1) 0%, rgba(86,135,2,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(120,178,4,1)), color-stop(100%, rgba(86,135,2,1)));
+  background: -webkit-linear-gradient(left, rgba(120,178,4,1) 0%, rgba(86,135,2,1) 100%);
+  background: -o-linear-gradient(left, rgba(120,178,4,1) 0%, rgba(86,135,2,1) 100%);
+  background: -ms-linear-gradient(left, rgba(120,178,4,1) 0%, rgba(86,135,2,1) 100%);
+  background: linear-gradient(to right, rgba(120,178,4,1) 0%, rgba(86,135,2,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78b204', endColorstr='#568702', GradientType=1 );
+}
+
+#upcInput{
+  height:22px;
+  font-size: 24px;
+
+}
+.developer{
+    color:white;
+}
+#upcButton{
+  margin-bottom:10px;
+}
+#upcContainer{
+  width:100%;
+  color:white;
+}
+#productName{
+  color:#006400;
+  margin-left:15px;
+}
+#productDescription{
+margin-left:15px;
+}
+#upcError{
+  display:none;
+}
+#userNameError{
+  display:none;
+}
+#passwordError{
+  display:none;
+}
+.whiteText{
+  color:white;
+}
+#header{
+  margin-bottom: 10px;
+}
+#widgetContainer{
+  position:relative;
+  border:1px solid black;
+  background: rgba(84,133,0,1);
+  background: -moz-linear-gradient(top, rgba(84,133,0,1) 0%, rgba(53,80,0,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(84,133,0,1)), color-stop(100%, rgba(53,80,0,1)));
+  background: -webkit-linear-gradient(top, rgba(84,133,0,1) 0%, rgba(53,80,0,1) 100%);
+  background: -o-linear-gradient(top, rgba(84,133,0,1) 0%, rgba(53,80,0,1) 100%);
+  background: -ms-linear-gradient(top, rgba(84,133,0,1) 0%, rgba(53,80,0,1) 100%);
+  background: linear-gradient(to bottom, rgba(84,133,0,1) 0%, rgba(53,80,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#548500', endColorstr='#355000', GradientType=0 );
+  padding:25px;
+    border-radius:20px;
+    width: 725px;
+    margin-top:30px;
+
+}
+#resultContainer{
+  display:block;
+  border:1px solid black;
+  position:relative;
+  background-color: white;
+  height:1200px;
+  width:700px;
+  padding:10px;
+    border-radius:20px;
+
+}
+#ingredientsContainer{
+  width:90%;
+  height:100px;
+  position:absolute;
+  bottom:30%;
+  padding:5px;
+  margin-left:20px;
+  display:none;
+}
+#ingredientsText{
+  font-size:12px;
+}
+#productImageContainer{
+  display:inline-block;
+  position:relative;
+  background-color:white;
+  border-radius:20px;
+
+  margin-left:70px;
+
+  padding:20px;
+}
+#productImage{
+  display:block;
+  position:relative;
+  background-color:blue;
+  left:0px;
+  top:0px;
+}
+#productError{
+  display:none;
+}
+#fitScore{
+  display:block;
+  position: absolute;
+  width:60px;
+  height:60px;
+  top:10px;
+  right:-10px;
+  border-radius:50%;
+
+}
+#fitScoreText{
+  color:white;
+  width: 100%;
+  top:25%;
+  font-size: 24px;
+  margin:auto;
+  position:absolute;
+  text-align: center;
+  vertical-align: middle;
+}
+#factsContainer {
+  display:none;
+  position:relative;
+  bottom: 0px;
+
+  height:300px;
+
+  float:right;
+  border: 1px solid black;
+  border-radius: 0px;
+  padding:5px;
+}
+ul{
+  list-style-type: none;
+}
+#good_preferences_list li{
+  margin-left:-30px;
+    background-image: url("images/quickFactsGood.png");
+}
+#bad_preferences_list li{
+  margin-left:-30px;
+    background-image: url("images/quickFactsBad.png");
+}
+#factsTitle{
+  top:0px;
+
+}
+#factsContainer li{
+
+  background-position: 0 0;
+  line-height:19px;
+  padding-left:30px;
+  background-repeat: no-repeat;
+
+
+}
+#nutritionContainer{
+  width: 90%;
+  height: 300px;
+  bottom: 0;
+  margin-left:15px;
+  position: absolute;
+  padding: 10px;
+
+}
+#nutritionText{
+    font-size:12px;
+}
+#tradeUpsContainer{
+  display: none;
+  width: 90%;
+  height: 300px;
+  position: absolute;
+  padding: 10px;
+}
+#tradeUpsTitle{
+
+  margin-left:15px;
+}
+.productName{
+    color:#006400;
+    margin-left: 15px;
+
+}
+.productDesc{
+  font-size: 12px;
+  bottom: 10px;
+  position:relative;
+    margin-left: 15px;
+}
+.tradeUpImageContainer{
+  position:absolute;
+  bottom:15px;
+  margin-left:25%;
+}
+.tradeUpImage{
+  width:auto;
+  height:auto;
+  max-width:100px;
+  max-height:120px;
+  position:relative;
+  display:block;
+
+}
+.tradeUpFitScore{
+  display:block;
+  position: absolute;
+  width:30px;
+  height:30px;
+  top:0;
+  right:-25%;
+  border-radius:50%;
+
+}
+.tradeUpFitScoreText{
+  color:white;
+  width: 100%;
+  top:25%;
+  font-size: 16px;
+  margin:auto;
+  position:absolute;
+  text-align: center;
+  vertical-align: middle;
+}
+.tradeUpContainer{
+  display:block;
+  width:200px;
+  height:200px;
+  padding:5px;
+  float:left;
+
+  position:relative;
+}
+
+#tradeUpOne{
+
+  margin-right:-1px;
+  border-right:1px solid black;
+
+}
+#tradeUpTwo{
+
+  border-right:1px solid black;
+  margin-right:-1px;
+}
+#tradeUpThree{
+
+
+}
+#termsOfService{
+  font-size:11px;
+  position:absolute;
+  bottom:5px;
+  display:inline;
+  left:5px;
+}
