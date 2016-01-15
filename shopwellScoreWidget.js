@@ -174,7 +174,6 @@ function getNutritionDetails(upcText, userName, password) {
         }
     });
 }
-
 //parse JSON, load into elements using jQuery
 function parseProductObject(jsonObj) {
     //product details binding
@@ -225,8 +224,10 @@ function parseProductObject(jsonObj) {
         $("#tradeUpsContainer").css({
             "display": "block"
         });
+        var i;
+
         //three trade up containers, place each product in correct container
-        for (var i = 0; i < 3; i++) {
+        for (i = 0; i < 3; i++) {
             var tradeUpProductName = tradeUps[i].product_name;
             var tradeUpBrandName = tradeUps[i].brand_name;
             if (tradeUpProductName != null && tradeUpProductName.length > 0) {
@@ -368,9 +369,30 @@ function parseProductObject(jsonObj) {
                         $("#tradeUpImageThree").attr("src", tradeUpImageUrl);
                     }
                     break;
-            }
-
+              }
         }
+        $("#tradeUpOne").css({
+            "display": "block"
+        });
+        $("#tradeUpTwo").css({
+            "display": "block"
+        });
+        $("#tradeUpThree").css({
+            "display": "block"
+        });
+        if(tradeUps.length==1){
+          $("#tradeUpThree").css({
+              "display": "none"
+          });
+          $("#tradeUpTwo").css({
+              "display": "none"
+          });
+        } else if (tradeUps.length==2){
+          $("#tradeUpThree").css({
+              "display": "none"
+          });
+        }
+
     } else {
         $("#tradeUpsContainer").css({
             "display": "none"
