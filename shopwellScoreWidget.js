@@ -227,7 +227,8 @@ function parseProductObject(jsonObj) {
         var i;
 
         //three trade up containers, place each product in correct container
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < tradeUps.length; i++) {
+            if(i==3) break;
             var tradeUpProductName = tradeUps[i].product_name;
             var tradeUpBrandName = tradeUps[i].brand_name;
             if (tradeUpProductName != null && tradeUpProductName.length > 0) {
@@ -380,6 +381,7 @@ function parseProductObject(jsonObj) {
         $("#tradeUpThree").css({
             "display": "block"
         });
+
         if(tradeUps.length==1){
           $("#tradeUpThree").css({
               "display": "none"
@@ -391,6 +393,7 @@ function parseProductObject(jsonObj) {
           $("#tradeUpThree").css({
               "display": "none"
           });
+
         }
 
     } else {
